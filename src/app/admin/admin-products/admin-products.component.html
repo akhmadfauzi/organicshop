@@ -15,11 +15,23 @@
         </p>
     </div>
 </div>
-<!-- <data-table [items]="filteredProducts">
-    <data-table-column [property]="'title'" [header]="'Title'" [sortable]="'true'"> </data-table-column>
-    <data-table-column [property]="'price'" [header]="'Price'"> </data-table-column>
-</data-table> -->
-<table class="table">
+<data-table id="my-table"  
+[title]="'Product'" 
+[items]="items" 
+[itemCount]="itemCount"
+>
+    <data-table-column [property]="'title'" [header]="'Title'" [sortable]="true" [resizable]="true"> </data-table-column>
+    <data-table-column [property]="'price'" [header]="'Price'" [sortable]="true" [resizable]="true">
+        <ng-template #dataTableCell let-item="item">{{item.price | currency}}</ng-template>
+    </data-table-column>
+    <data-table-column> 
+            <ng-template #dataTableCell let-item="item">
+                    <a class="btn-sm btn btn-primary" [routerLink]="['/admin/product', item.key]">edit</a>    
+            </ng-template>
+    </data-table-column>
+    
+</data-table>
+<!-- <table class="table">
     <thead>
         <tr>
             <th>Title</th>
@@ -36,4 +48,4 @@
             </td>
         </tr>
     </tbody>
-</table>
+</table> -->
