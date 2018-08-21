@@ -1,0 +1,39 @@
+<div class="row">
+    <div class="col-md-6">
+        <p>
+            <a routerLink="/admin/product/new" class="btn btn-primary">New product</a>
+        </p>
+    </div>
+    <div class="col-md-6">
+        <p>
+            <input 
+            #query
+            (keyup.enter)="filter(query.value)"
+            type="text" 
+            class="form-control" 
+            placeholder="Search...">
+        </p>
+    </div>
+</div>
+<data-table [items]="filteredProducts">
+    <data-table-column [property]="'title'" [header]="'Title'" [sortable]="'true'"> </data-table-column>
+    <data-table-column [property]="'price'" [header]="'Price'"> </data-table-column>
+</data-table>
+<!-- <table class="table">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Price</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let p of filteredProducts">
+            <td> {{p.title}} </td>
+            <td> {{p.price | currency}} </td>
+            <td> 
+                <a class="btn-sm btn btn-primary" [routerLink]="['/admin/product', p.key]">edit</a>    
+            </td>
+        </tr>
+    </tbody>
+</table> -->
